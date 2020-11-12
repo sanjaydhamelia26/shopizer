@@ -331,31 +331,31 @@ public class ShoppingCategoryController {
 			return null;
 		}
 
-		List<Object[]> countProductsByCategories = categoryService.countProductsByCategories(store, subIds);
+//		List<Object[]> countProductsByCategories = categoryService.countProductsByCategories(store, subIds);
 		Map<Long, Long> countByCategories = new HashMap<Long,Long>();
 		
-		for(Object[] counts : countProductsByCategories) {
-			Category c = (Category)counts[0];
-			if(c.getParent()!=null) {
-				if(c.getParent().getId()==category.getId()) {
-					countByCategories.put(c.getId(), (Long)counts[1]);
-				} else {
-					//get lineage
-					String lin = c.getLineage();
-					String[] categoryPath = lin.split(Constants.CATEGORY_LINEAGE_DELIMITER);
-					for(int i=0 ; i<categoryPath.length; i++) {
-						String sId = categoryPath[i];
-						if(!StringUtils.isBlank(sId)) {
-								Long count = countByCategories.get(Long.parseLong(sId));
-								if(count!=null) {
-									count = count + (Long)counts[1];
-									countByCategories.put(Long.parseLong(sId), count);
-								}
-						}
-					}
-				}
-			}
-		}
+//		for(Object[] counts : countProductsByCategories) {
+//			Category c = (Category)counts[0];
+//			if(c.getParent()!=null) {
+//				if(c.getParent().getId()==category.getId()) {
+//					countByCategories.put(c.getId(), (Long)counts[1]);
+//				} else {
+//					//get lineage
+//					String lin = c.getLineage();
+//					String[] categoryPath = lin.split(Constants.CATEGORY_LINEAGE_DELIMITER);
+//					for(int i=0 ; i<categoryPath.length; i++) {
+//						String sId = categoryPath[i];
+//						if(!StringUtils.isBlank(sId)) {
+//								Long count = countByCategories.get(Long.parseLong(sId));
+//								if(count!=null) {
+//									count = count + (Long)counts[1];
+//									countByCategories.put(Long.parseLong(sId), count);
+//								}
+//						}
+//					}
+//				}
+//			}
+//		}
 		
 		return countByCategories;
 		
