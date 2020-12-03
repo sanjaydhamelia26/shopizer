@@ -29,6 +29,13 @@ public interface UserFacade {
   ReadableUser findByUserName(String userName, String storeCode, Language lang);
   
   /**
+   * Find user by userName
+   * @param userName
+   * @return
+   */
+  ReadableUser findByUserName(String userName);
+  
+  /**
    * Find user by id
    * @param id
    * @param merchant
@@ -120,7 +127,7 @@ public interface UserFacade {
    * Update User
    * @param user
    */
-  ReadableUser update(Long id, String authenticatedUser, String storeCode, PersistableUser user);
+  ReadableUser update(Long id, String authenticatedUser, MerchantStore store, PersistableUser user);
   
   /**
    * Change password request
