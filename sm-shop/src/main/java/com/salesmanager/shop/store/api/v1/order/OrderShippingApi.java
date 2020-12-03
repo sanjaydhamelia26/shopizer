@@ -184,7 +184,7 @@ public class OrderShippingApi {
    * @throws Exception
    */
   @RequestMapping(
-      value = {"/cart/{code}/shipping"},
+      value = {"/cart/{id}/shipping"},
       method = RequestMethod.POST)
   @ResponseBody
   @ApiImplicitParams({
